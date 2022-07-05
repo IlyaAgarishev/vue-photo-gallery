@@ -1,6 +1,8 @@
 <template>
   <v-container>
-    <PhotoForm @addPhoto="addPhoto" />
+    <PhotoForm v-if="photos.length < 11" @addPhoto="addPhoto" />
+    <div v-else>Вы не можете добавить больше фотографий</div>
+
     <v-row>
       <Photo v-for="photo in photos" :photo="photo" @openPhoto="openPhoto" />
     </v-row>
