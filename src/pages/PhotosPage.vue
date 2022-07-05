@@ -18,6 +18,16 @@ export default {
       { id: 4, title: "фото 4" },
     ],
   }),
+  mounted() {
+    this.fetchTodo();
+  },
+  methods: {
+    fetchTodo() {
+      this.axios
+        .get("https://jsonplaceholder.typicode.com/photos?_limit=10")
+        .then((resp) => (this.photos = resp.data));
+    },
+  },
 };
 </script>
 
