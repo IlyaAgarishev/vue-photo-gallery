@@ -16,14 +16,27 @@
 export default {
   props: {
     photo: { type: Object, required: true },
-    dialogVisible: {
+    value: {
       type: Boolean,
       default: false,
     },
   },
+  created() {
+    this.dialogVisible = this.value;
+  },
   data: () => ({
     dialogVisible: false,
   }),
+
+  // отслеживаемые свойства
+  watch: {
+    value(newValue) {
+      this.dialogVisible = newValue;
+    },
+    dialogVisible(newValue) {
+      this.$emit("input", newValue);
+    },
+  },
 };
 </script>
 

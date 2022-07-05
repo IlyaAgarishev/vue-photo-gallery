@@ -5,7 +5,7 @@
       <Photo v-for="photo in photos" :photo="photo" @openPhoto="openPhoto" />
     </v-row>
 
-    <PhotoDialog :photo="currentPhoto" :dialogVisible="dialogVisible" />
+    <PhotoDialog :photo="currentPhoto" v-model="dialogVisible" />
   </v-container>
 </template>
 
