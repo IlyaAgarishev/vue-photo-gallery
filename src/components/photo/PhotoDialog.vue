@@ -2,7 +2,7 @@
   <v-dialog v-model="dialogVisible" max-width="600">
     <v-card>
       <v-card-title>
-        {{ photo.title }}
+        {{ full_title }}
       </v-card-title>
 
       <v-card-text>
@@ -35,6 +35,14 @@ export default {
     },
     dialogVisible(newValue) {
       this.$emit("input", newValue);
+    },
+  },
+
+  // вычисляемые свойства
+  computed: {
+    // ф-ия будет вызываться только тогда, когда изменилось какое-то из полей, используемое внутри самой ф-ии
+    full_title() {
+      return `Название фотографии - ${this.photo.title}`;
     },
   },
 };
