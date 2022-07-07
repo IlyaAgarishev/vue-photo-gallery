@@ -1,10 +1,14 @@
 <template>
   <v-container>
-    <PhotoForm v-if="photos.length < 11" @addPhoto="addPhoto" />
+    <PhotoForm v-if="photos.length < 12" @addPhoto="addPhoto" />
     <div v-else>Вы не можете добавить больше фотографий</div>
 
     <v-row>
-      <Photo v-for="photo in photos" :photo="photo" @openPhoto="openPhoto" />
+      <Photo
+        v-for="photo in $store.getters.getAllPhotos"
+        :photo="photo"
+        @openPhoto="openPhoto"
+      />
     </v-row>
 
     <PhotoDialog :photo="currentPhoto" v-model="dialogVisible" />
@@ -25,15 +29,10 @@ export default {
     dialogVisible: false,
   }),
   mounted() {
-    this.fetchTodo();
+    // dispatch работатет с асинхронными экшенами
+    this.$store.dispatch("fetchPhotos");
   },
   methods: {
-    fetchTodo() {
-      this.axios
-        .get("https://jsonplaceholder.typicode.com/photos?_limit=10")
-        .then((resp) => (this.photos = resp.data));
-    },
-
     addPhoto(photo) {
       this.photos.push(photo);
     },
