@@ -9,12 +9,15 @@
 </template>
 
 <script>
+import { mapMutations } from "vuex";
+
 export default {
   data: () => ({
     title: "",
     img: null,
   }),
   methods: {
+    ...mapMutations(["addNewPhoto"]),
     addPhoto() {
       const reader = new FileReader();
       reader.onload = () => {
@@ -24,7 +27,7 @@ export default {
           url: reader.result,
         };
 
-        this.$emit("addPhoto", photo);
+        this.addNewPhoto(photo);
       };
       reader.readAsDataURL(this.img);
     },

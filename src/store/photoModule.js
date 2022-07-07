@@ -20,6 +20,9 @@ export default {
     setCurrentPhoto(state, payload) {
       state.currentPhoto = payload;
     },
+    addNewPhoto(state, payload) {
+      state.photos.push(payload);
+    },
   },
   getters: {
     getAllPhotos(state) {

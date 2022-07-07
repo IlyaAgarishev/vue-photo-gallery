@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <PhotoForm v-if="photos.length < 12" @addPhoto="addPhoto" />
+    <PhotoForm v-if="$store.getters.getAllPhotos.length < 12" />
     <div v-else>Вы не можете добавить больше фотографий</div>
 
     <v-row>
@@ -31,9 +31,9 @@ export default {
   },
   methods: {
     ...mapActions(["fetchPhotos"]),
-    addPhoto(photo) {
-      this.photos.push(photo);
-    },
+    // addPhoto(photo) {
+    //   this.photos.push(photo);
+    // },
 
     openPhoto(photo) {
       this.currentPhoto = photo;
