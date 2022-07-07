@@ -12,13 +12,16 @@
 </template>
 
 <script>
+import { mapMutations } from "vuex";
+
 export default {
   methods: {
+    ...mapMutations(["setCurrentPhoto", "showDialog"]),
     openPhoto() {
-      this.$emit("openPhoto", this.photo);
+      this.showDialog();
+      this.setCurrentPhoto(this.photo);
     },
   },
-
   props: {
     photo: {
       type: Object,
