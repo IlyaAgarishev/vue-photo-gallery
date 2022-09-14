@@ -1,4 +1,4 @@
-### Photo Gallery
+### Vue Photo Gallery
 
 Just a little project to practice vue.
 
